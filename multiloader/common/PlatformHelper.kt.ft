@@ -1,6 +1,6 @@
-package org.valkyrienskies.vs_template.platform
+package ${MAIN_CLASS.packageName}.platform
 
-import org.valkyrienskies.vs_template.platform.services.ServiceHelper
+import ${MAIN_CLASS.packageName}.platform.services.ServiceHelper
 
 interface PlatformHelper {
     /**

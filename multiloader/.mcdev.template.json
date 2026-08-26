@@ -105,7 +105,7 @@
       "destination": "settings.gradle"
     },
     {
-      "template": "${MC_VERSION} gradle.properties.ft",
+      "template": "gradle.properties.ft",
       "destination": "gradle.properties"
     },
     {
@@ -129,20 +129,16 @@
       "destination": "common/src/main/java/${MAIN_CLASS.packagePath}/mixin/MixinMinecraft.java"
     },
     {
-      "template": "common/IPlatformHelper.java.ft",
-      "destination": "common/src/main/java/${MAIN_CLASS.packagePath}/platform/services/IPlatformHelper.java"
+      "template": "common/PlatformHelper.kt.ft",
+      "destination": "common/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/PlatformHelper.kt"
     },
     {
-      "template": "common/Services.java.ft",
-      "destination": "common/src/main/java/${MAIN_CLASS.packagePath}/platform/Services.java"
+      "template": "common/ServiceHelper.kt.ft",
+      "destination": "common/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/services/ServiceHelper.kt"
     },
     {
-      "template": "common/CommonClass.java.ft",
-      "destination": "common/src/main/java/${MAIN_CLASS.packagePath}/CommonClass.java"
-    },
-    {
-      "template": "common/Constants.java.ft",
-      "destination": "common/src/main/java/${MAIN_CLASS.packagePath}/Constants.java"
+      "template": "common/MainClass.kt.ft",
+      "destination": "common/src/main/kotlin/${MAIN_CLASS.path}.kt"
     },
     {
       "template": "common/mixins.json.ft",
@@ -157,20 +153,16 @@
       "destination": "fabric/build.gradle"
     },
     {
-      "template": "fabric/ExampleMod.java.ft",
-      "destination": "fabric/src/main/java/${MAIN_CLASS.path}.java"
+      "template": "fabric/MainClass.kt.ft",
+      "destination": "fabric/src/main/kotlin/${MAIN_CLASS.path}Fabric.kt"
     },
     {
-      "template": "fabric/FabricPlatformHelper.java.ft",
-      "destination": "fabric/src/main/java/${MAIN_CLASS.packagePath}/platform/FabricPlatformHelper.java"
+      "template": "fabric/PlatformHelper.kt.ft",
+      "destination": "fabric/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/FabricPlatformHelper.kt"
     },
     {
       "template": "fabric/MixinTitleScreen.java.ft",
       "destination": "fabric/src/main/java/${MAIN_CLASS.packagePath}/mixin/MixinTitleScreen.java"
-    },
-    {
-      "template": "fabric/service.IPlatformHelper.ft",
-      "destination": "fabric/src/main/resources/META-INF/services/${MAIN_CLASS.packageName}.platform.services.IPlatformHelper"
     },
     {
       "template": "fabric/fabric.mixins.json.ft",
@@ -185,12 +177,12 @@
       "destination": "forge/build.gradle"
     },
     {
-      "template": "forge/ExampleMod.java.ft",
-      "destination": "forge/src/main/java/${MAIN_CLASS.path}.java"
+      "template": "forge/MainClass.kt.ft",
+      "destination": "forge/src/main/kotlin/${MAIN_CLASS.path}.kt"
     },
     {
-      "template": "forge/ForgePlatformHelper.java.ft",
-      "destination": "forge/src/main/java/${MAIN_CLASS.packagePath}/platform/ForgePlatformHelper.java"
+      "template": "forge/PlatformHelper.java.ft",
+      "destination": "forge/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/ForgePlatformHelper.kt"
     },
     {
       "template": "forge/MixinTitleScreen.java.ft",
@@ -207,34 +199,6 @@
     {
       "template": "forge/mods.toml.ft",
       "destination": "forge/src/main/resources/META-INF/mods.toml"
-    },
-    {
-      "template": "neoforge/build.gradle.ft",
-      "destination": "neoforge/build.gradle"
-    },
-    {
-      "template": "neoforge/ExampleMod.java.ft",
-      "destination": "neoforge/src/main/java/${MAIN_CLASS.path}.java"
-    },
-    {
-      "template": "neoforge/NeoForgePlatformHelper.java.ft",
-      "destination": "neoforge/src/main/java/${MAIN_CLASS.packagePath}/platform/NeoForgePlatformHelper.java"
-    },
-    {
-      "template": "neoforge/MixinTitleScreen.java.ft",
-      "destination": "neoforge/src/main/java/${MAIN_CLASS.packagePath}/mixin/MixinTitleScreen.java"
-    },
-    {
-      "template": "neoforge/service.IPlatformHelper.ft",
-      "destination": "neoforge/src/main/resources/META-INF/services/${MAIN_CLASS.packageName}.platform.services.IPlatformHelper"
-    },
-    {
-      "template": "neoforge/neoforge.mixins.json.ft",
-      "destination": "neoforge/src/main/resources/${MOD_ID}.neoforge.mixins.json"
-    },
-    {
-      "template": "neoforge/neoforge.mods.toml.ft",
-      "destination": "neoforge/src/main/resources/META-INF/neoforge.mods.toml"
     }
   ],
   "finalizers": [

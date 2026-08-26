@@ -1,4 +1,4 @@
-package org.valkyrienskies.vs_template.platform
+package ${MAIN_CLASS.packageName}.platform
 
 import com.fueledbycaffeine.autoservice.AutoService
 import net.minecraftforge.fml.ModList

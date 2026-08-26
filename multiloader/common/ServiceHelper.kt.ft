@@ -1,8 +1,8 @@
-package org.valkyrienskies.vs_template.platform.services
+package ${MAIN_CLASS.packageName}.platform.services
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.valkyrienskies.vs_template.VSTemplateMod
+import ${MAIN_CLASS.packageName}.${MAIN_CLASS.className}
 import java.util.*
 import java.util.function.Supplier
 
@@ -12,7 +12,7 @@ import java.util.function.Supplier
  * Many thanks to Electrisoma for providing this helper.
  */
 object ServiceHelper {
-    private val LOG: Logger = LoggerFactory.getLogger(VSTemplateMod.MOD_ID + "/ServiceHelper")
+    private val LOG: Logger = LoggerFactory.getLogger(${MAIN_CLASS.className}.MOD_ID + "/ServiceHelper")
 
     /**
      * Loads an optional service that can exist or not.
