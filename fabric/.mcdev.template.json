@@ -1,0 +1,175 @@
+{
+  "version": 3,
+  "label": "Fabric",
+  "properties": [
+    {
+      "name": "BUILD_COORDS",
+      "type": "build_system_coordinates",
+      "order": 10
+    },
+    {
+      "name": "LANGUAGE",
+      "type": "string",
+      "options": [
+        "Java",
+        "Kotlin"
+      ],
+      "label": "Language:",
+      "default": 0
+    },
+    {
+      "name": "ICON",
+      "type": "boolean",
+      "label": "Include default icon:",
+      "default": 1
+    },
+    {
+      "name": "MOD_ID",
+      "type": "string",
+      "validator": "[a-z][a-z0-9-_]{1,63}",
+      "derives": {
+        "parents": ["PROJECT_NAME"],
+        "method": "replace",
+        "parameters": {
+          "regex": "[^a-z0-9-_]+",
+          "replacement": "_",
+          "maxLength": 64,
+          "lowercase": true
+        }
+      }
+    },
+    {
+      "name": "MOD_NAME",
+      "type": "string",
+      "inheritFrom": "PROJECT_NAME"
+    },
+    {
+      "name": "MAIN_CLASS",
+      "type": "class_fqn",
+      "derives": {
+        "parents": ["BUILD_COORDS", "MOD_ID"],
+        "method": "suggestClassName"
+      }
+    },
+    {
+      "name": "LICENSE",
+      "type": "license"
+    },
+    {
+      "label": "creator.ui.optional_settings.label",
+      "collapsible": true,
+      "groupProperties": [
+        {
+          "name": "DESCRIPTION",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "AUTHORS",
+          "type": "inline_string_list",
+          "default": ""
+        },
+        {
+          "name": "WEBSITE",
+          "type": "string",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "name": "JAVA_VERSION",
+      "type": "integer",
+      "order": 20,
+      "default": 17,
+      "visible": false
+    },
+    {
+      "name": "JDK",
+      "type": "jdk",
+      "order": 20,
+      "default": "JAVA_VERSION"
+    }
+  ],
+  "files": [
+    {
+      "template": "../Gradle.gitignore.ft",
+      "destination": ".gitignore",
+      "condition": "$USE_GIT"
+    },
+    {
+      "template": "build.gradle.kts.ft",
+      "destination": "build.gradle.kts"
+    },
+    {
+      "template": "settings.gradle.kts.ft",
+      "destination": "settings.gradle.kts"
+    },
+    {
+      "template": "gradle.properties.ft",
+      "destination": "gradle.properties"
+    },
+    {
+      "template": "../gradle-wrapper.properties.ft",
+      "destination": "gradle/wrapper/gradle-wrapper.properties",
+      "properties": {
+        "GRADLE_VERSION": "9.6.1"
+      }
+    },
+    {
+      "template": "fabric.mod.json.ft",
+      "destination": "src/main/resources/fabric.mod.json"
+    },
+    {
+      "template": "mixins.json.ft",
+      "destination": "src/main/resources/${MOD_ID}.mixins.json"
+    },
+    {
+      "template": "Initializer.java.ft",
+      "destination": "src/main/java/${MAIN_CLASS.path}.java",
+      "condition": "$LANGUAGE == 'Java'",
+      "openInEditor": true
+    },
+    {
+      "template": "ClientInitializer.java.ft",
+      "destination": "src/main/java/${MAIN_CLASS.packagePath}/client/${MAIN_CLASS.className}Client.java",
+      "condition": "$LANGUAGE == 'Java'",
+      "openInEditor": true
+    },
+    {
+      "template": "Initializer.kt.ft",
+      "destination": "src/main/kotlin/${MAIN_CLASS.path}.kt",
+      "condition": "$LANGUAGE == 'Kotlin'",
+      "openInEditor": true
+    },
+    {
+      "template": "ClientInitializer.kt.ft",
+      "destination": "src/main/kotlin/${MAIN_CLASS.packagePath}/client/${MAIN_CLASS.className}Client.kt",
+      "condition": "$LANGUAGE == 'Kotlin'",
+      "openInEditor": true
+    },
+    {
+      "template": "../licenses/${LICENSE.id}.txt.ft",
+      "destination": "LICENSE.txt"
+    }
+  ],
+  "finalizers": [
+    {
+      "type": "run_gradle_tasks",
+      "tasks": ["wrapper", "downloadIcon"]
+    },
+    {
+      "type": "import_gradle_project"
+    },
+    {
+      "type": "add_gradle_run",
+      "tasks": [
+        "build"
+      ],
+      "name": "Build"
+    },
+    {
+      "type": "git_add_all",
+      "condition": "$USE_GIT"
+    }
+  ]
+}

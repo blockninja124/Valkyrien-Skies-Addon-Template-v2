@@ -1,0 +1,34 @@
+package ${MAIN_CLASS.packageName};
+
+import net.minecraftforge.fml.common.Mod
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
+import net.minecraftforge.fml.loading.FMLEnvironment
+import org.valkyrienskies.mod.api.vsApi
+import ${MAIN_CLASS.packageName}.client.${MAIN_CLASS.className}Client
+import ${MAIN_CLASS.packageName}.${MAIN_CLASS.className}.Companion.MOD_ID
+
+
+@Mod(MOD_ID)
+class ${MAIN_CLASS.className} {
+
+    init {
+        val modEventBus = FMLJavaModLoadingContext.get().modEventBus
+
+        modEventBus.addListener(::init)
+        if (FMLEnvironment.dist.isClient) {
+            modEventBus.addListener(${MAIN_CLASS.className}Client.Companion::clientInit)
+        }
+    }
+
+    companion object {
+        const val MOD_ID = "${MOD_ID}"
+        @JvmStatic
+        fun init (event: FMLCommonSetupEvent) {
+            // Put anything initialized on forge-side here.
+            vsApi.physTickEvent.on {
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,168 @@
+{
+  "version": 3,
+  "properties": [
+    {
+      "name": "BUILD_COORDS",
+      "type": "build_system_coordinates",
+      "order": 10
+    },
+    {
+      "name": "LANGUAGE",
+      "type": "string",
+      "options": [
+        "Java",
+        "Kotlin"
+      ],
+      "default": 0
+    },
+    {
+      "name": "MOD_ID",
+      "type": "string",
+      "validator": "[a-z][a-z0-9_]{1,63}",
+      "derives": {
+        "parents": ["PROJECT_NAME"],
+        "method": "replace",
+        "parameters": {
+          "regex": "[^a-z0-9-_]+",
+          "replacement": "_",
+          "maxLength": 64,
+          "lowercase": true
+        }
+      }
+    },
+    {
+      "name": "MOD_NAME",
+      "type": "string",
+      "inheritFrom": "PROJECT_NAME"
+    },
+    {
+      "name": "MAIN_CLASS",
+      "type": "class_fqn",
+      "derives": {
+        "parents": ["BUILD_COORDS", "MOD_ID"],
+        "method": "suggestClassName"
+      }
+    },
+    {
+      "name": "LICENSE",
+      "type": "license"
+    },
+    {
+      "label": "creator.ui.optional_settings.label",
+      "collapsible": true,
+      "groupProperties": [
+        {
+          "name": "DESCRIPTION",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "AUTHORS",
+          "type": "inline_string_list",
+          "default": ""
+        },
+        {
+          "name": "WEBSITE",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "UPDATE_URL",
+          "type": "string",
+          "default": "",
+          "nullIfDefault": true
+        }
+      ]
+    },
+    {
+      "name": "JAVA_VERSION",
+      "type": "integer",
+      "order": 20,
+      "default": 17,
+      "visible": false
+    },
+    {
+      "name": "JDK",
+      "type": "jdk",
+      "order": 20,
+      "default": "JAVA_VERSION"
+    }
+  ],
+  "files": [
+    {
+      "template": "mixins.md.ft",
+      "destination": "src/main/java/${MAIN_CLASS.packagePath}/mixin/mixins.md"
+    },
+    {
+      "template": "../Gradle.gitignore.ft",
+      "destination": ".gitignore",
+      "condition": "$USE_GIT"
+    },
+    {
+      "template": "build.gradle.ft",
+      "destination": "build.gradle"
+    },
+    {
+      "template": "settings.gradle.ft",
+      "destination": "settings.gradle"
+    },
+    {
+      "template": "gradle.properties.ft",
+      "destination": "gradle.properties"
+    },
+    {
+      "template": "../gradle-wrapper.properties.ft",
+      "destination": "gradle/wrapper/gradle-wrapper.properties"
+    },
+    {
+      "template": "mods.toml.ft",
+      "destination": "src/main/resources/META-INF/mods.toml"
+    },
+    {
+      "template": "pack.mcmeta.ft",
+      "destination": "src/main/resources/pack.mcmeta"
+    },
+    {
+      "template": "MixinsConfig.json.ft",
+      "destination": "src/main/resources/${MOD_ID}.mixins.json"
+    },
+    {
+      "template": "MainClass.java.ft",
+      "destination": "src/main/java/${MAIN_CLASS.path}.java",
+      "condition": "$LANGUAGE == 'Java'",
+      "openInEditor": true
+    },
+    {
+      "template": "MainClass.kt.ft",
+      "destination": "src/main/kotlin/${MAIN_CLASS.path}.kt",
+      "condition": "$LANGUAGE == 'Kotlin'",
+      "openInEditor": true
+    },
+    {
+      "template": "MainClassClient.kt.ft",
+      "destination": "src/main/kotlin/${MAIN_CLASS.packagePath}/client/${MAIN_CLASS.className}Client.kt",
+      "condition": "$LANGUAGE == 'Kotlin'",
+      "openInEditor": true
+    }
+  ],
+  "finalizers": [
+    {
+      "type": "run_gradle_tasks",
+      "tasks": ["wrapper", "downloadIcon"]
+    },
+    {
+      "type": "import_gradle_project"
+    },
+    {
+      "type": "add_gradle_run",
+      "tasks": [
+        "build"
+      ],
+      "name": "Build"
+    },
+    {
+      "type": "git_add_all",
+      "condition": "$USE_GIT"
+    }
+  ]
+}

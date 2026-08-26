@@ -1,0 +1,34 @@
+#set ( $d = "$" )
+{
+  "schemaVersion": 1,
+  "id": "${MOD_ID}",
+  "version": "${d}{version}",
+
+  "name": "${d}{mod_name}",
+  "description": "${d}{description}",
+  "authors": ["${d}{author}"],
+  "contact": {},
+
+  "license": "${d}{license}",
+  "icon": "assets/${MOD_ID}/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": ["${MAIN_CLASS.packageName}.client.${MAIN_CLASS.className}Client"],
+    "main": ["${MAIN_CLASS}"]
+  },
+
+  "mixins": [
+    "${MOD_ID}.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=${d}{loader_version}",
+#if (${LANGUAGE} == 'Kotlin')
+    "fabric-language-kotlin": ">=${d}{kotlin_loader_version}",
+#end
+    "fabric-api": "*",
+    "minecraft": "${d}{minecraft_version}",
+    "valkyrienskies": ">=2.4.0"
+  }
+}
