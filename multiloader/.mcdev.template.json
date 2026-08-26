@@ -181,16 +181,12 @@
       "destination": "forge/src/main/kotlin/${MAIN_CLASS.path}.kt"
     },
     {
-      "template": "forge/PlatformHelper.java.ft",
+      "template": "forge/PlatformHelper.kt.ft",
       "destination": "forge/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/ForgePlatformHelper.kt"
     },
     {
       "template": "forge/MixinTitleScreen.java.ft",
       "destination": "forge/src/main/java/${MAIN_CLASS.packagePath}/mixin/MixinTitleScreen.java"
-    },
-    {
-      "template": "forge/service.IPlatformHelper.ft",
-      "destination": "forge/src/main/resources/META-INF/services/${MAIN_CLASS.packageName}.platform.services.IPlatformHelper"
     },
     {
       "template": "forge/forge.mixins.json.ft",
@@ -207,7 +203,7 @@
     },
     {
       "type": "run_gradle_tasks",
-      "tasks": ["wrapper", "genIntellijRuns"]
+      "tasks": ["wrapper"]
     },
     {
       "type": "git_add_all",
