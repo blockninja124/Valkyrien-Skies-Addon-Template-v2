@@ -18,7 +18,7 @@
       "main": [
         {
           "adapter": "kotlin",
-          "value": "${MAIN_CLASS.packagePath}.${MAIN_CLASS.className}Fabric"
+          "value": "${MAIN_CLASS.packageName}.${MAIN_CLASS.className}Fabric"
         }
       ]
     },
