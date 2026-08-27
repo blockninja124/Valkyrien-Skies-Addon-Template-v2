@@ -237,6 +237,18 @@
     {
       "template": "forge/mods.toml.ft",
       "destination": "forge/src/main/resources/META-INF/mods.toml"
+    },
+    {
+      "template": "readme.java.md.ft",
+      "destination": "README.md",
+      "condition": "$LANGUAGE == 'Java'",
+      "openInEditor": true
+    },
+    {
+      "template": "readme.kt.md.ft",
+      "destination": "README.md",
+      "condition": "$LANGUAGE == 'Kotlin'",
+      "openInEditor": true
     }
   ],
   "finalizers": [

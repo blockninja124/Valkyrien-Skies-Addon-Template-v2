@@ -150,6 +150,11 @@
     {
       "template": "../licenses/${LICENSE.id}.txt.ft",
       "destination": "LICENSE.txt"
+    },
+    {
+      "template": "readme.md.ft",
+      "destination": "README.md",
+      "openInEditor": true
     }
   ],
   "finalizers": [

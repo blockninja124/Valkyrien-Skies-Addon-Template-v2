@@ -143,6 +143,11 @@
       "destination": "src/main/kotlin/${MAIN_CLASS.packagePath}/client/${MAIN_CLASS.className}Client.kt",
       "condition": "$LANGUAGE == 'Kotlin'",
       "openInEditor": true
+    },
+    {
+      "template": "readme.md.ft",
+      "destination": "README.md",
+      "openInEditor": true
     }
   ],
   "finalizers": [
