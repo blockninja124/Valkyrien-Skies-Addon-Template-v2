@@ -1,0 +1,19 @@
+package ${MAIN_CLASS.packageName};
+
+import net.minecraftforge.fml.common.Mod;
+
+@Mod(${MAIN_CLASS.className}.MOD_ID)
+public class ${MAIN_CLASS.className}Forge {
+    
+    public ${MAIN_CLASS.className}Forge() {
+    
+        // This method is invoked by the Forge mod loader when it is ready
+        // to load your mod. You can access Forge and Common code in this
+        // project.
+    
+        // Use Forge to bootstrap the Common mod.
+        ${MAIN_CLASS.className}.LOG.info("Hello Forge world!");
+        ${MAIN_CLASS.className}.init();
+        
+    }
+}

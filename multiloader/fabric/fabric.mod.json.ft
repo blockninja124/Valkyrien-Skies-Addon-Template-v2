@@ -1,35 +1,38 @@
+#set ( ${d} = "$" )
 {
     "schemaVersion": 1,
     "id": "vs_template",
-    "version": "${version}",
-    "name": "${mod_name}",
-    "description": "${description}",
+    "version": "${d}{version}",
+    "name": "${d}{mod_name}",
+    "description": "${d}{description}",
     "authors": [
-        "${mod_author}"
+        "${d}{mod_author}"
     ],
     "contact": {
         "homepage": "https://fabricmc.net/",
         "sources": "https://github.com/FabricMC/fabric-example-mod"
     },
-    "license": "${license}",
+    "license": "${d}{license}",
     "icon": "icon.png",
     "environment": "*",
     "entrypoints": {
       "main": [
         {
+#if ( ${LANGUAGE} == 'Kotlin' )
           "adapter": "kotlin",
+#end
           "value": "${MAIN_CLASS.packageName}.${MAIN_CLASS.className}Fabric"
         }
       ]
     },
     "mixins": [
-        "${mod_id}.mixins.json",
-        "${mod_id}.fabric.mixins.json"
+        "${d}{mod_id}.mixins.json",
+        "${d}{mod_id}.fabric.mixins.json"
     ],
     "depends": {
         "fabricloader": ">=0.14",
         "fabric": "*",
-        "minecraft": "${minecraft_version}",
+        "minecraft": "${d}{minecraft_version}",
         "java": ">=17",
         "valkyrienskies": ">=2.4.0"
     },

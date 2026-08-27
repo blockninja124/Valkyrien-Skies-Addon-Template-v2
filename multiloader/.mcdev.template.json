@@ -130,15 +130,33 @@
     },
     {
       "template": "common/PlatformHelper.kt.ft",
-      "destination": "common/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/PlatformHelper.kt"
+      "destination": "common/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/PlatformHelper.kt",
+      "condition": "$LANGUAGE == 'Kotlin'"
+    },
+    {
+      "template": "common/PlatformHelper.java.ft",
+      "destination": "common/src/main/java/${MAIN_CLASS.packagePath}/platform/PlatformHelper.java",
+      "condition": "$LANGUAGE == 'Java'"
     },
     {
       "template": "common/ServiceHelper.kt.ft",
-      "destination": "common/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/services/ServiceHelper.kt"
+      "destination": "common/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/services/ServiceHelper.kt",
+      "condition": "$LANGUAGE == 'Kotlin'"
+    },
+    {
+      "template": "common/ServiceHelper.java.ft",
+      "destination": "common/src/main/java/${MAIN_CLASS.packagePath}/platform/services/ServiceHelper.java",
+      "condition": "$LANGUAGE == 'Java'"
     },
     {
       "template": "common/MainClass.kt.ft",
-      "destination": "common/src/main/kotlin/${MAIN_CLASS.path}.kt"
+      "destination": "common/src/main/kotlin/${MAIN_CLASS.path}.kt",
+      "condition": "$LANGUAGE == 'Kotlin'"
+    },
+    {
+      "template": "common/MainClass.java.ft",
+      "destination": "common/src/main/java/${MAIN_CLASS.path}.java",
+      "condition": "$LANGUAGE == 'Java'"
     },
     {
       "template": "common/mixins.json.ft",
@@ -154,11 +172,23 @@
     },
     {
       "template": "fabric/MainClass.kt.ft",
-      "destination": "fabric/src/main/kotlin/${MAIN_CLASS.path}Fabric.kt"
+      "destination": "fabric/src/main/kotlin/${MAIN_CLASS.path}Fabric.kt",
+      "condition": "$LANGUAGE == 'Kotlin'"
+    },
+    {
+      "template": "fabric/MainClass.java.ft",
+      "destination": "fabric/src/main/java/${MAIN_CLASS.path}Fabric.java",
+      "condition": "$LANGUAGE == 'Java'"
     },
     {
       "template": "fabric/PlatformHelper.kt.ft",
-      "destination": "fabric/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/FabricPlatformHelper.kt"
+      "destination": "fabric/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/FabricPlatformHelper.kt",
+      "condition": "$LANGUAGE == 'Kotlin'"
+    },
+    {
+      "template": "fabric/PlatformHelper.java.ft",
+      "destination": "fabric/src/main/java/${MAIN_CLASS.packagePath}/platform/FabricPlatformHelper.java",
+      "condition": "$LANGUAGE == 'Java'"
     },
     {
       "template": "fabric/MixinTitleScreen.java.ft",
@@ -178,11 +208,23 @@
     },
     {
       "template": "forge/MainClass.kt.ft",
-      "destination": "forge/src/main/kotlin/${MAIN_CLASS.path}.kt"
+      "destination": "forge/src/main/kotlin/${MAIN_CLASS.path}Forge.kt",
+      "condition": "$LANGUAGE == 'Kotlin'"
+    },
+    {
+      "template": "forge/MainClass.java.ft",
+      "destination": "forge/src/main/java/${MAIN_CLASS.path}Forge.java",
+      "condition": "$LANGUAGE == 'Java'"
     },
     {
       "template": "forge/PlatformHelper.kt.ft",
-      "destination": "forge/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/ForgePlatformHelper.kt"
+      "destination": "forge/src/main/kotlin/${MAIN_CLASS.packagePath}/platform/ForgePlatformHelper.kt",
+      "condition": "$LANGUAGE == 'Kotlin'"
+    },
+    {
+      "template": "forge/PlatformHelper.java.ft",
+      "destination": "forge/src/main/java/${MAIN_CLASS.packagePath}/platform/ForgePlatformHelper.java",
+      "condition": "$LANGUAGE == 'Java'"
     },
     {
       "template": "forge/MixinTitleScreen.java.ft",

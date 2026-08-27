@@ -1,14 +1,17 @@
 plugins {
     id 'fabric-loom' version '1.9-SNAPSHOT' apply(false)
     id 'net.neoforged.moddev.legacyforge' version '2.0.77' apply(false)
+#if ( ${LANGUAGE} == 'Kotlin' )
     id 'org.jetbrains.kotlin.jvm' version "2.0.0" apply false
     id 'com.fueledbycaffeine.autoservice' version "0.1.4" apply false
+#end
 }
 
 repositories {
     mavenCentral()
 }
 
+#if ( ${LANGUAGE} == 'Kotlin' )
 subprojects {
     apply plugin: "kotlin"
     // Our replacement for arch's @ExpectPlatform
@@ -27,4 +30,5 @@ subprojects {
         jvmToolchain(17)
     }
 }
+#end
 // If you're looking to add project-wide repositories or dependencies, see multiloader-common.gradle instead

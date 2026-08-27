@@ -13,7 +13,9 @@ buildscript {
 plugins {
     id 'multiloader-loader'
     id 'net.neoforged.moddev.legacyforge'
+#if ( ${LANGUAGE} == 'Kotlin' )
     id 'org.jetbrains.kotlin.jvm'
+#end
 }
 
 mixin {
