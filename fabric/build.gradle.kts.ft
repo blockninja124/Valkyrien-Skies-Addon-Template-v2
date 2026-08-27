@@ -120,6 +120,7 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 #end
 
+#if (${ICON})
 //region You may safely remove this entire section once the icon.png file is downloaded.
 // This task is required because the png file gets corrupted when processed by the project generator
 val downloadIcon by tasks.registering {
@@ -145,7 +146,7 @@ val downloadIcon by tasks.registering {
     }
 }
 //endregion 
-
+#end
 
 tasks.jar {
     from("LICENSE") {
