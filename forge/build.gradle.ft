@@ -1,6 +1,8 @@
 #set ( $d = "$" )
+#if (${ICON})
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
+#end
 #if (${LANGUAGE} == 'Kotlin')
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
@@ -188,6 +190,7 @@ tasks.withType(JavaCompile).configureEach {
     it.options.release = 17
 }
 
+#if (${ICON})
 //region You may safely remove this entire section once the icon.png file is downloaded.
 // This task is required because the png file gets corrupted when processed by the project generator
 def downloadIcon = tasks.register("downloadIcon") {
@@ -213,3 +216,4 @@ def downloadIcon = tasks.register("downloadIcon") {
     }
 }
 //endregion 
+#end

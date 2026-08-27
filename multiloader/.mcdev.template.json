@@ -1,5 +1,6 @@
 {
   "version": 3,
+  "label": "Multiloader",
   "properties": [
     {
       "name": "BUILD_COORDS",
@@ -8,6 +9,7 @@
     },
     {
       "name": "LANGUAGE",
+      "label": "Language: ",
       "type": "string",
       "options": [
         "Java",

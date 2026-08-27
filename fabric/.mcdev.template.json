@@ -160,7 +160,12 @@
   "finalizers": [
     {
       "type": "run_gradle_tasks",
-      "tasks": ["wrapper", "downloadIcon"]
+      "tasks": ["wrapper"]
+    },
+    {
+      "type": "run_gradle_tasks",
+      "tasks": ["downloadIcon"],
+      "condition": "$ICON"
     },
     {
       "type": "import_gradle_project"
